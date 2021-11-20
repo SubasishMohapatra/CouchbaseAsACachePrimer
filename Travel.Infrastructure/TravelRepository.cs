@@ -30,16 +30,6 @@ namespace Travel.Infrastructure
                 var statement = "SELECT id,name,iata,icao,callsign, country FROM `travel-sample` WHERE type ='airline'";
                 var result = await cluster.QueryAsync<Airline>(statement);
                 return await result.ToListAsync();
-
-                //var cluster = await Couchbase.Cluster.ConnectAsync(
-                //       "couchbase://localhost:8091",
-                //       "Administrator",
-                //       "password");
-
-                //var travelBucket = await _travelBucketProvider.GetBucketAsync().ConfigureAwait(false);
-                //var cluster = travelBucket.Cluster;
-                //var result = await cluster.QueryAsync<Airline>("SELECT * FROM `travel-sample` t WHERE t.type ='airline'");
-                //return await result.ToListAsync();
             }
             catch (Exception ex)
             {
@@ -56,15 +46,6 @@ namespace Travel.Infrastructure
                 var statement = "SELECT id,name,iata,icao,callsign, country FROM `travel-sample` WHERE type ='airline'";
                 var result = await cluster.QueryAsync<Airline>(statement);
                 return result.Rows;
-
-                //var cluster = await Couchbase.Cluster.ConnectAsync(
-                //       "couchbase://localhost:8091",
-                //       "Administrator",
-                //       "password");
-                ////var travelBucket = await _travelBucketProvider.GetBucketAsync();
-                ////var cluster = travelBucket.Cluster;
-                //var result = await cluster.QueryAsync<Airline>("SELECT * FROM `travel-sample` t WHERE t.type ='airline'");
-                //return result.Rows;
             }
             catch(Exception ex)
             {

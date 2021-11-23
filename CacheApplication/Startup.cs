@@ -1,15 +1,12 @@
+using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Travel.Domain.Interfaces;
-using Travel.Infrastructure;
-using Travel.Infrastructure.Interfaces;
-using Travel.WebAPI.Service;
 
-namespace Travel.API
+namespace CacheApplication
 {
     public class Startup
     {
@@ -23,22 +20,18 @@ namespace Travel.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging();
             services.AddControllers();
-            services.AddScoped<ITravelService, TravelService>();
-            services.AddScoped<ITravelRepository, TravelRepository>();
-            //services.AddCouchbase(Configuration);
+            services.AddLogging();
             services.AddCouchbase(options => options.WithConnectionString("couchbase://127.0.0.1")
             .WithCredentials("Administrator", "password")
             .WithBuckets("Cache-Sample"));
-            //.WithBuckets("Cache-Sample", "travel-sample"));
-            services.AddCouchbaseBucket<ITravelBucketProvider>("travel-sample");
-            //services.RegisterCouchbaseNamedBuckets("travel-sample", () => Configuration.GetSection("Couchbase"));            
-
+            services.AddCouchbaseBucket<ICacheBucketProvider>("Cache-Sample");
+            //services.RegisterCouchbaseNamedBuckets("travel-sample", () => Configuration.GetSection("Couchbase"));
+            services.AddDistributedCouchbaseCache("Cache-Sample", opt => { });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime hostApplicationLifetime)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -54,10 +47,6 @@ namespace Travel.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-            hostApplicationLifetime.ApplicationStopped.Register(() =>
-            {
-                app.ApplicationServices.GetRequiredService<ICouchbaseLifetimeService>().Close();
             });
         }
     }

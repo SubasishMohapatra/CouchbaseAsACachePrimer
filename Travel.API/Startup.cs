@@ -28,7 +28,9 @@ namespace Travel.API
             services.AddScoped<ITravelService, TravelService>();
             services.AddScoped<ITravelRepository, TravelRepository>();
             //services.AddCouchbase(Configuration);
-            services.AddCouchbase(options => options.WithConnectionString("couchbase://127.0.0.1")
+            services.AddCouchbase(options => options.WithConnectionString("couchbase://117.17.0.2")
+            .WithConnectionString("couchbase://117.17.0.3")
+            .WithConnectionString("couchbase://117.17.0.4")
             .WithCredentials("Administrator", "password")
             .WithBuckets("Cache-Sample"));
             //.WithBuckets("Cache-Sample", "travel-sample"));

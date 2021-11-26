@@ -1,3 +1,4 @@
+using Couchbase;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
 
 namespace CacheApplication
 {
@@ -22,12 +25,30 @@ namespace CacheApplication
         {
             services.AddControllers();
             services.AddLogging();
-            services.AddCouchbase(options => options.WithConnectionString("couchbase://127.0.0.1")
+
+            services.AddCouchbase(options =>
+            options
+            //.WithConnectionString("couchbase://127.0.0.1")
+            //.WithConnectionString("couchbase://localhost")
+            .WithConnectionString("couchbase://172.17.0.2")
+            //.WithConnectionString("couchbase://117.17.0.3")
+            //.WithConnectionString("couchbase://117.17.0.4")
             .WithCredentials("Administrator", "password")
             .WithBuckets("Cache-Sample"));
-            services.AddCouchbaseBucket<ICacheBucketProvider>("Cache-Sample");
+            services.AddCouchbaseBucket<ICouchbaseCacheBucketProvider>("Cache-Sample");
             //services.RegisterCouchbaseNamedBuckets("travel-sample", () => Configuration.GetSection("Couchbase"));
             services.AddDistributedCouchbaseCache("Cache-Sample", opt => { });
+
+  //          var options = new ClusterOptions()
+  //.WithConnectionString("couchbase://localhost")
+  //.WithCredentials(username: "Administrator", password: "password")
+  //.WithBuckets("Cache-Sample");
+            //.WithLogging(LoggerFactory.Create(builder =>
+            //{
+            //    builder.AddFilter("Couchbase", LogLevel.Debug)
+            //    .AddEventLog();
+            //}));                
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

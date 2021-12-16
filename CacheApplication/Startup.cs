@@ -29,10 +29,10 @@ namespace CacheApplication
             services.AddCouchbase(options =>
             options
             //.WithConnectionString("couchbase://127.0.0.1")
-            //.WithConnectionString("couchbase://localhost")
-            .WithConnectionString("couchbase://172.17.0.2")
-            //.WithConnectionString("couchbase://117.17.0.3")
-            //.WithConnectionString("couchbase://117.17.0.4")
+            .WithConnectionString("couchbase://localhost")
+            //.WithConnectionString("couchbase://172.17.0.2")  //Docker localhost multinode
+            //.WithConnectionString("couchbase://10.2.32.175") //Docker ACSRMXDCNINT02 singlenode
+            //.WithConnectionString("couchbase://10.2.32.175:11210")
             .WithCredentials("Administrator", "password")
             .WithBuckets("Cache-Sample"));
             services.AddCouchbaseBucket<ICouchbaseCacheBucketProvider>("Cache-Sample");

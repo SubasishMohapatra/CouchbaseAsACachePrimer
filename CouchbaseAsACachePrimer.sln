@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Domain", "Travel.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Infrastructure", "Travel.Infrastructure\Travel.Infrastructure.csproj", "{12E04A19-61F0-43BC-B6EF-795E5C1204A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheApplication", "CacheApplication\CacheApplication.csproj", "{06D60AF1-EFD8-4B0F-AEC8-3FE6948548D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheApplication", "CacheApplication\CacheApplication.csproj", "{06D60AF1-EFD8-4B0F-AEC8-3FE6948548D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Couchbase.Extensions.Caching", "..\CouchbaseExtensions\Couchbase.Extensions\src\Couchbase.Extensions.Caching\Couchbase.Extensions.Caching.csproj", "{93B6D495-9B1D-44E7-A4C4-C59501D03969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Couchbase.BulkReadAndWrite", "Couchbase.BulkReadAndWrite\Couchbase.BulkReadAndWrite.csproj", "{34C337A3-C388-4DE3-B780-ECC7DEF21537}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{93B6D495-9B1D-44E7-A4C4-C59501D03969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B6D495-9B1D-44E7-A4C4-C59501D03969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B6D495-9B1D-44E7-A4C4-C59501D03969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C337A3-C388-4DE3-B780-ECC7DEF21537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C337A3-C388-4DE3-B780-ECC7DEF21537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C337A3-C388-4DE3-B780-ECC7DEF21537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C337A3-C388-4DE3-B780-ECC7DEF21537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

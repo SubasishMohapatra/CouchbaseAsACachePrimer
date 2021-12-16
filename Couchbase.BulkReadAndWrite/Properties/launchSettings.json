@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Couchbase.BulkReadAndWrite": {
+      "commandName": "Project",
+      "commandLineArgs": "CacheKey:UpperValue=1 CacheKey:RecordCount=10000 CacheKey:PageSize=10000"
+    }
+  }
+}

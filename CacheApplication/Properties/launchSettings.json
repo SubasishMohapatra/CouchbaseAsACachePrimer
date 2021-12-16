@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/cache",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/cache/GetCachedWeatherForecastAsync",
       "publishAllPorts": true,
       "useSSL": true
     }
